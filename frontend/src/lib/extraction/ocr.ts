@@ -100,7 +100,7 @@ function mapWords(data: {
 
 async function recognizeOnce(
   prepared: Blob,
-  sourceFile: string,
+  _sourceFile: string,
   page?: number,
 ): Promise<OcrResult> {
   const { createWorker, PSM } = await import('tesseract.js')

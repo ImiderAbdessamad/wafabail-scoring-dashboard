@@ -169,10 +169,6 @@ function buildDocumentsFromDetail(d: Dossier, detail: DossierDetail, _tier: Tier
   }
 }
 
-function buildPendingDocuments(d: Dossier, detail: DossierDetail): DocumentsBlock {
-  return buildDocumentsFromDetail(d, detail, 0)
-}
-
 function buildDocuments(_d: Dossier, _tier: Tier): DocumentsBlock {
   return {
     present: 0,

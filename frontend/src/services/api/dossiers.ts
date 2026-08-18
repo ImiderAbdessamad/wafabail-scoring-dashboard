@@ -255,8 +255,9 @@ export async function replaceDossierDocument(
 
   if (USE_MOCK) {
     await delay(320)
-    if (dossier.status !== 'pending') {
-      throw new Error('Upload autorisé uniquement pour les dossiers « Docs en attente »')
+    const dossier = getDossierStore().find((d) => d.id === dossierId)
+    if (!dossier) {
+      throw new Error('Dossier introuvable')
     }
 
     const files = [...getMockDetailFiles(dossierId)]

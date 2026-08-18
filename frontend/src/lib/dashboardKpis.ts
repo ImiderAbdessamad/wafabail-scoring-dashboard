@@ -107,7 +107,7 @@ export function computeDashboardKpis(records: Dossier[], now = new Date()): Dash
   }
 }
 
-function riskTone(urgency?: string): RiskBucket['tone'] {
+function riskTone(urgency?: string): 'mid' | 'high' {
   return urgency === 'haute' ? 'high' : 'mid'
 }
 

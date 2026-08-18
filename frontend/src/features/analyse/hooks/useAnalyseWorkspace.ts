@@ -344,10 +344,7 @@ export function useAnalyseWorkspace(id: string | undefined) {
 
       if (USE_MOCK && data) {
         const qa = data.copilot.qa
-        const answer =
-          _intent && _intent !== 'fallback'
-            ? qa[_intent]
-            : qa.fallback
+        const answer = _intent ? qa[_intent] : qa.fallback
         window.setTimeout(() => {
           setMessages((prev) => [...prev, { role: 'ai', text: answer }])
           setThinking(false)

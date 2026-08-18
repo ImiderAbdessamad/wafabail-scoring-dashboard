@@ -310,6 +310,10 @@ describe('ExtractionWorkspace', () => {
         throw new Error('simulated failure')
       }),
     ).rejects.toThrow('simulated failure')
+  })
+})
+
+describe('liasse DGI', () => {
   it('extrait l’ICE en tête de liasse DGI (Identification du contribuable)', () => {
     const page1 = `
 001669862000005

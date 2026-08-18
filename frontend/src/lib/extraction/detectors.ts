@@ -234,7 +234,8 @@ function detectRcCandidates(
 ): ExtractionCandidate[] {
   const candidates: ExtractionCandidate[] = []
   const chrono = detectRcChronologiqueCandidates(normalized, sourceFile, page, ocrConfidence)
-  candidates.push(...chrono)
+  const analytique = detectRcAnalytiqueCandidates(normalized, sourceFile, page, ocrConfidence)
+  candidates.push(...chrono, ...analytique)
 
   for (const match of normalized.matchAll(RC_LABEL)) {
     const index = match.index ?? 0
