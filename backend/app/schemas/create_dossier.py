@@ -82,3 +82,8 @@ class StoredDossierRecord(BaseModel):
     analyseJobId: str | None = None
     analyseStatus: str | None = None
     analyse: dict | None = None
+    source: str = "wfb"
+    noDemande: str | None = None
+    noPv: str | None = None
+    pvcId: str | None = None
+    pvc: dict | None = None

@@ -67,6 +67,8 @@ def list_dossiers(status: str | None, q: str | None) -> DossierListResponse:
             or needle in d.name.lower()
             or needle in d.sector.lower()
             or needle in d.analyst.lower()
+            or needle in (d.noDemande or "").lower()
+            or needle in (d.noPv or "").lower()
         ]
     return DossierListResponse(items=items, total=len(items))
 

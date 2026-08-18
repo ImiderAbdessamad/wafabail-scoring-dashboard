@@ -6,7 +6,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 from app.core.config import settings
-from app.schemas.create_dossier import StoredDossierRecord
+from app.schemas.create_dossier import StoredDossierRecord, StoredFileMeta
 from app.schemas.dossier import Dossier
 
 _lock = threading.Lock()
@@ -60,6 +60,17 @@ def get_by_id(dossier_id: str) -> StoredDossierRecord | None:
     with _lock:
         for record in _load():
             if record.id == dossier_id:
+                return record
+    return None
+
+
+def get_by_no_demande(no_demande: str) -> StoredDossierRecord | None:
+    needle = (no_demande or "").strip()
+    if not needle:
+        return None
+    with _lock:
+        for record in _load():
+            if record.noDemande == needle or record.id == needle:
                 return record
     return None
 
@@ -173,4 +184,7 @@ def to_list_item(record: StoredDossierRecord) -> Dossier:
         receivedLabel=record.receivedLabel,
         analyseStatus=record.analyseStatus,
         analyseProgressPct=progress,
+        source=record.source,
+        noDemande=record.noDemande,
+        noPv=record.noPv,
     )

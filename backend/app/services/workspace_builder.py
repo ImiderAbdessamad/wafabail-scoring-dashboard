@@ -619,6 +619,8 @@ def _header(record: StoredDossierRecord, result: ScoringAnalysisResult | None = 
         bits.append(f"ICE {ice}")
     if rc and rc != "—":
         bits.append(f"RC {rc}")
+    if record.source == "pvc" and record.noDemande:
+        bits.append(f"PVC {record.noDemande}")
     return {
         "id": record.id,
         "shortCode": record.id.split("-")[-1],
@@ -632,6 +634,9 @@ def _header(record: StoredDossierRecord, result: ScoringAnalysisResult | None = 
         "durationMonths": record.duration,
         "apportPct": record.apport,
         "location": ville or "Maroc",
+        "source": record.source,
+        "noDemande": record.noDemande,
+        "noPv": record.noPv,
     }
 
 

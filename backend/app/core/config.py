@@ -80,6 +80,7 @@ class Settings:
     rcc_extract_max_side: int = int(os.getenv("RCC_EXTRACT_MAX_SIDE", "2400"))
     rcc_max_pages: int = int(os.getenv("RCC_MAX_PAGES", "60"))
     analyse_job_ttl_minutes: int = int(os.getenv("ANALYSE_JOB_TTL_MINUTES", "180"))
+    pvc_api_key: str = os.getenv("PVC_API_KEY", "").strip()
 
 
 settings = Settings()

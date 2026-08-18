@@ -16,6 +16,9 @@ class Dossier(BaseModel):
     receivedLabel: str | None = None
     analyseStatus: str | None = None
     analyseProgressPct: int | None = None
+    source: str | None = None
+    noDemande: str | None = None
+    noPv: str | None = None
 
 
 class DossierListResponse(BaseModel):
